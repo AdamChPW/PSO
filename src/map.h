@@ -1,6 +1,9 @@
 #ifndef _MAP_H_
 #define _MAP_H_
 
+// Obsługa wczytywania mapy, zwalniania pamięci mapy, pobierania wartości z danego punktu.
+
+
 typedef struct Map {
     int w;
     int h;

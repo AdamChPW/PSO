@@ -3,6 +3,8 @@
 #include "map.h"
 
 /*
+Puki co odpalanie i obsluga bledow
+
 Zwraca 0 - Gdy program zakonczyl dzialanie sukcesem
 Zwraca 1 - Gdy nie podano zadnych argumentow wywolania
 Zwraca 2 - Gdy podano nieparzysta liczbe argumentow
