@@ -2,7 +2,7 @@
 #define _MAP_H_
 
 // Obsługa wczytywania mapy, zwalniania pamięci mapy, pobierania wartości z danego punktu.
-
+// data[r][c] (x = row, y = column)
 
 typedef struct Map {
     int w;

@@ -2,10 +2,14 @@
 #include <stdlib.h>
 
 #include "map.h"
+#include "utilis.h"
+
+#define BUFSIZE 8192
 
 Map* LoadMap(char* file)
 {
     int w, h;
+    char buf[BUFSIZE];
     Map* map = NULL;
 
     FILE* in = fopen(file,"r");
@@ -17,28 +21,28 @@ Map* LoadMap(char* file)
 
         if(map != NULL)
         {
-            int i, j;
-            for(i = 0; i < h; i++)
-                for(j = 0; j < w; j++)
-                    if( fscanf(in, "%lf", &map->data[i][j])!=1)
-                    {
-                        fprintf(stderr, "Wystopil blad przy implementacji danych do mapy. [%d %d] \n", i, j);
-                        fclose(in);
-                        FreeMap(map);
-                        return NULL;
-                    }
+            fgets(buf, BUFSIZE, in);
+            int i;
+            for(i = 0; i < h; i++){
+
+                if(fgets(buf, BUFSIZE, in) != NULL)
+                    if(ReadRow(buf, w, map->data[i]) == w)
+                        continue;
+                    
+                fprintf(stderr, "[src/map.c] Wystopil blad przy implementacji danych do mapy. (rzat %d) \n", i);
+                fclose(in);
+                FreeMap(map);
+                return NULL;
+            }
 
         }
         else{
-            fprintf(stderr, "Wystopil blad przy tworzeniu mapy.\n");
-            fclose(in);
-            return NULL;
+            fprintf(stderr, "[src/map.c] Wystopil blad przy tworzeniu mapy.\n");
         }
         
     }
     else{
-        fprintf(stderr, "Nie udalo sie otworzyc pliku %s\n", file);
-        return NULL;
+        fprintf(stderr, "[src/map.c] Nie udalo sie otworzyc pliku %s\n", file);
     }
 
     fclose(in);
@@ -63,10 +67,10 @@ Map* CreateMap(int w, int h){
 }
 
 double GetValue(Map* map, double x, double y){
-    int i,j;
-    i = (int) x;
-    j = (int) y;
-    return map->data[i][j];
+    int c,r;
+    r = (int) x;
+    c = (int) y;
+    return map->data[r][c];
 }
 
 void FreeMap(Map* map){
