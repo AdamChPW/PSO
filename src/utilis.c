@@ -6,12 +6,15 @@
 
 int ReadRow(char *s, int w, double *target)
 {
-    int i, offset, wystopienia = 0;
+    int i = 0, offset = 0, roznica = 0, wystopienia = 0;
     int str_len = strlen(s);
-    for(i=0; i<w && offset < str_len; i++){
-        sscanf(s+offset,"%lf%n", &target[i], &offset);
-        wystopienia++;
-    }
+    
+    for(i = 0; i < w && offset < str_len; i++)
+        if(sscanf(s+offset,"%lf%n", &target[i], &roznica)){
+            offset += roznica;
+            wystopienia++;
+        }
+
     return wystopienia;
 }
 

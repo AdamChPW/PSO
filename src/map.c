@@ -70,6 +70,12 @@ double GetValue(Map* map, double x, double y){
     int c,r;
     r = (int) x;
     c = (int) y;
+
+    if(r >= map->h || c >= map->h){
+        fprintf(stderr, "[src/map.c] GetValue: Wspolrzedne poza mapa: (%d %d)\n",r,c);
+        exit(-1);
+    }
+
     return map->data[r][c];
 }
 
