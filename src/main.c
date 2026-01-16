@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "map.h"
+#include "utilis.h"
 
 /*
 Puki co odpalanie i obsluga bledow
@@ -23,12 +26,16 @@ int main(int argc, char** argv)
         return 2;
     }
 
+    srand(time(NULL));
+
     Map *map = LoadMap(argv[1]);
 
     if(map == NULL){
         fprintf(stderr,"[%s] Error 3: Nieudalo sie wczytac mapy.\n",argv[0]);
         return 3;
     }
+
+    printf("%lf\n",RandDouble(4.2,6.4));
 
     return 0;
 }

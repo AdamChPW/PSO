@@ -3,4 +3,6 @@
 
 // (Opcjonalnie) Generatory liczb losowych, funkcje pomocnicze.
 
+double RandDouble(double min, double max);
+
 #endif
