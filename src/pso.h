@@ -1,5 +1,6 @@
 #ifndef _PSO_H_
 #define _PSO_H_
+#include "map.h"
 
 typedef struct Particle { 
 	double* x; 
