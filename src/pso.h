@@ -13,7 +13,7 @@ typedef struct Swarm {
 	int p; 
 } Swarm;
 
-Particle* CreateParticle(int w, int h);
+Particle* CreateParticle(int w, int h, Map* map);
 Swarm* CreateSwarm(int p, int w, int h);
 void FreeSwarm(Swarm* swarm);
 void PSOIteration(Swarm* swarm, double w, double c1, double c2, double r1, double r2, Map* map);
