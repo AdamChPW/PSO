@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <math.h>
 #include "pso.h"
 #include "map.h"
 #include "logger.h"
@@ -65,11 +66,14 @@ int main(int argc, char** argv)
             if (out != NULL) {
                 fprintf(out, "ITERACJA %d\n", j);
                 for(int k = 0; k < p; k++){
-                    LogPosition(out, k, (int)swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1], GetValue(map, swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1]));
+                    LogPosition(out, k, (int)round(swarm->particles[k]->x[0]), (int)round(swarm->particles[k]->x[1]), GetValue(map, swarm->particles[k]->x[0], swarm->particles[k]->x[1]));
                 }
             }
 		}
     }
-
+	
+	printf("Znaleziona pozycja to [%d]	[%d]\n", (int)round(swarm->gbest[0]), (int)round(swarm->gbest[1]));
+	printf("Wartosc tej pozycji wynosi: [%lf]\n", GetValue(map, swarm->gbest[0], swarm->gbest[1]));
+	
     return 0;
 }
