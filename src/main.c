@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <math.h>
 #include "pso.h"
 #include "map.h"
 #include "logger.h"
