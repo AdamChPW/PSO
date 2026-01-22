@@ -21,7 +21,7 @@ Swarm* CreateSwarm(int p) {
     return swarm;
 }
 
-Particle* CreateParticle() {
+Particle* CreateParticle(int w, int h) {
 
 	Particle* particle = (Particle*)malloc(sizeof(Particle));
 
@@ -31,8 +31,8 @@ Particle* CreateParticle() {
         particle->pbest = (double*)malloc(2 * sizeof(double));
     }
 
-    particle->x[0] = (double)(rand() % 7);
-    particle->x[1] = (double)(rand() % 7);
+    particle->x[0] = (double)(rand() % w);
+    particle->x[1] = (double)(rand() % h);
 	particle->v[0] = RandDouble(-1.0, 1.0);
 	particle->v[1] = RandDouble(-1.0, 1.0); 
 	particle->pbest[0] = particle->x[0];
