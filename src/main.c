@@ -55,19 +55,19 @@ int main(int argc, char** argv)
 
     Swarm* swarm = CreateSwarm(p, map->w, map->h, map);
 
+    FILE* out = n == 0 ? NULL : fopen("csv.txt", "w");
+
     for(j = 0; j < i; j++){
         PSOIteration(swarm, w, c1, c2, r1, r2, map);
 		r1 = ((double)rand()) / RAND_MAX;
         r2 = ((double)rand()) / RAND_MAX;
         if(n > 0 && j % n == 0){
-			FILE* out = fopen("csv.txt", "a");
             if (out != NULL) {
                 fprintf(out, "ITERACJA %d\n", j);
-                fclose(out);
+                for(int k = 0; k < p; k++){
+                    LogPosition(out, k, (int)swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1], GetValue(map, swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1]));
+                }
             }
-            for(int k = 0; k < p; k++){
-                LogPosition(k, (int)swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1], GetValue(map, swarm->particles[k]->x[1], (int)swarm->particles[k]->x[0]));
-			}
 		}
     }
 
