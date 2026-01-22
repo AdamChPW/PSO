@@ -53,7 +53,7 @@ int main(int argc, char** argv)
         }
     }
 
-    Swarm* swarm = CreateSwarm(p, map->w, map->h, map);
+    Swarm* swarm = CreateSwarm(p, map->h, map->w, map);
 
     for(j = 0; j < i; j++){
         PSOIteration(swarm, w, c1, c2, r1, r2, map);
