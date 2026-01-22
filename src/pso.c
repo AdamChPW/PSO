@@ -4,7 +4,7 @@
 #include "utilis.h"
 #include "map.h"
 
-Swarm* CreateSwarm(int p, int w, int h, Map* map) {
+Swarm* CreateSwarm(int p, int h, int w, Map* map) {
 
     Swarm* swarm = (Swarm*)malloc(sizeof(Swarm));
 
@@ -23,7 +23,7 @@ Swarm* CreateSwarm(int p, int w, int h, Map* map) {
         swarm->p = p;
 
         for (int i = 0; i < p; i++) {
-            swarm->particles[i] = CreateParticle(w, h);
+            swarm->particles[i] = CreateParticle(h, w);
             if (!swarm->particles[i]) {
 				FreeSwarm(swarm);
 				return NULL;
@@ -45,7 +45,7 @@ Swarm* CreateSwarm(int p, int w, int h, Map* map) {
     return swarm;
 }
 
-Particle* CreateParticle(int w, int h) {
+Particle* CreateParticle(int h, int w) {
 
 	Particle* particle = (Particle*)malloc(sizeof(Particle));
 
@@ -62,8 +62,8 @@ Particle* CreateParticle(int w, int h) {
 		free(particle);
         return NULL;
     }
-    particle->x[0] = (double)(rand() % w);
-    particle->x[1] = (double)(rand() % h);
+    particle->x[0] = (double)(rand() % h);
+    particle->x[1] = (double)(rand() % w);
 	particle->v[0] = RandDouble(-1.0, 1.0);
 	particle->v[1] = RandDouble(-1.0, 1.0); 
 	particle->pbest[0] = particle->x[0];
