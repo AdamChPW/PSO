@@ -45,12 +45,19 @@ int main(int argc, char** argv)
         }
     }
 
-    Swarm* CreateSwarm(p);
     Map *map = LoadMap(argv[1]);
 
     if(map == NULL){
         fprintf(stderr,"[%s] Error 3: Nieudalo sie wczytac mapy.\n",argv[0]);
         return 3;
+    }
+
+    Swarm* swarm = CreateSwarm(p, map->w, map->h, map);
+
+    for(j = 0; j < i; j++){
+        PSOIteration(swarm, w, c1, c2, r1, r2, map);
+		r1 = ((double)rand()) / RAND_MAX;
+        r2 = ((double)rand()) / RAND_MAX;
     }
 
     return 0;
