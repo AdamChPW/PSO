@@ -66,13 +66,13 @@ int main(int argc, char** argv)
             if (out != NULL) {
                 fprintf(out, "ITERACJA %d\n", j);
                 for(int k = 0; k < p; k++){
-                    LogPosition(out, k, (int)round(swarm->particles[k]->x[0]), (int)round(swarm->particles[k]->x[1]), GetValue(map, swarm->particles[k]->x[0], swarm->particles[k]->x[1]));
+                    LogPosition(out, k, (int)swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1], GetValue(map, swarm->particles[k]->x[0], swarm->particles[k]->x[1]));
                 }
             }
 		}
     }
 	
-	printf("Znaleziona pozycja to [%d]	[%d] : %lf\n", (int)round(swarm->gbest[0]), (int)round(swarm->gbest[1]), GetValue(map, swarm->gbest[0], swarm->gbest[1]));
+	printf("Znaleziona pozycja to [%d]	[%d] : %lf\n", (int)swarm->gbest[0], (int)swarm->gbest[1], GetValue(map, swarm->gbest[0], swarm->gbest[1]));
 	
     return 0;
 }
