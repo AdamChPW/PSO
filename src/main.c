@@ -72,8 +72,7 @@ int main(int argc, char** argv)
 		}
     }
 	
-	printf("Znaleziona pozycja to [%d]	[%d]\n", (int)round(swarm->gbest[0]), (int)round(swarm->gbest[1]));
-	printf("Wartosc tej pozycji wynosi: [%lf]\n", GetValue(map, swarm->gbest[0], swarm->gbest[1]));
+	printf("Znaleziona pozycja to [%d]	[%d] : %lf\n", (int)round(swarm->gbest[0]), (int)round(swarm->gbest[1]), GetValue(map, swarm->gbest[0], swarm->gbest[1]));
 	
     return 0;
 }
