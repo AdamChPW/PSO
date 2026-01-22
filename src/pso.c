@@ -99,10 +99,10 @@ void PSOIteration(Swarm* swarm, double w, double c1, double c2, double r1, doubl
         particle->x[0] += particle->v[0];
         particle->x[1] += particle->v[1];
 
+		if (particle->x[0] < 0) particle->x[0] = 0;
         if ((int)particle->x[0] > map->w - 1) particle->x[0] = map->w - 1;
-		if ((int)particle->x[0] < 0) particle->x[0] = 0;
+		if (particle->x[1] < 0) particle->x[1] = 0;
         if ((int)particle->x[1] > map->h - 1) particle->x[1] = map->h - 1;
-		if ((int)particle->x[1] < 0) particle->x[1] = 0;
 
         double currentValue = GetValue(map, particle->x[0], particle->x[1]);
         double pbestValue = GetValue(map, particle->pbest[0], particle->pbest[1]);
