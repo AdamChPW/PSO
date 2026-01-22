@@ -71,7 +71,7 @@ int main(int argc, char** argv)
 		}
     }
 	
-	printf("Znaleziona pozycja to [%d]	[%d] : %lf\n", (int)swarm->gbest[0], (int)swarm->gbest[1], GetValue(map, swarm->gbest[0], swarm->gbest[1]));
+	printf("Znaleziona pozycja to [%d]	[%d] : %.2lf\n", (int)swarm->gbest[0], (int)swarm->gbest[1], GetValue(map, swarm->gbest[0], swarm->gbest[1]));
 	
     return 0;
 }
