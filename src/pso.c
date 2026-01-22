@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "utilis.h"
 
-Swarm* CreateSwarm(int p) {
+Swarm* CreateSwarm(int p, int w, int h) {
 
     Swarm* swarm = (Swarm*)malloc(sizeof(Swarm));
 
@@ -14,7 +14,7 @@ Swarm* CreateSwarm(int p) {
 
         if (swarm->particles != NULL) {
             for (int i = 0; i < p; i++) {
-                swarm->particles[i] = CreateParticle();
+                swarm->particles[i] = CreateParticle(w, h);
             }
         }
     }
