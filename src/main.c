@@ -18,8 +18,8 @@ int main(int argc, char** argv)
     Map* map = LoadMap(argv[1]);
 
     if (map == NULL) {
-        fprintf(stderr, "[%s] Error 3: Nieudalo sie wczytac mapy.\n", argv[0]);
-        return 3;
+        fprintf(stderr, "[%s] Error 2: Nieudalo sie wczytac mapy.\n", argv[0]);
+        return 2;
     }
 
     double w = 0.5, c1 = 1.0, c2 = 1.0, r1 = ((double)rand()) / RAND_MAX, r2 = ((double)rand()) / RAND_MAX;
