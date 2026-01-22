@@ -66,7 +66,7 @@ int main(int argc, char** argv)
                 fclose(out);
             }
             for(int k = 0; k < p; k++){
-                LogPosition(k, (int)swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1]);
+                LogPosition(k, (int)swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1], GetValue(map, swarm->particles[k]->x[0], (int)swarm->particles[k]->x[1]));
 			}
 		}
     }
