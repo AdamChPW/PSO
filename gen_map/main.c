@@ -4,9 +4,12 @@
 #include "gen_map.h"
 
 int main(int argc, char* argv[]) {
-	printf("Program przyjmuje dane w formacie:\n");
-	printf("<wymagane> [opcjonalne]\n");
-	printf("./%s <plik_do_zapisu> [szerokosc_mapy] [wysokosc_mapy] [max_sygnal] [mocnosc_sygnalu]\n", argv[0]);
+
+	if(argc == 0){
+		printf("Program przyjmuje dane w formacie:\n");
+		printf("<wymagane> [opcjonalne]\n");
+		printf("./%s <plik_do_zapisu> [szerokosc_mapy] [wysokosc_mapy] [max_sygnal] [mocnosc_sygnalu]\n", argv[0]);
+	}
 
 	if (argc < 2) {
 		fprintf(stderr, "[%s]: Za malo argumentow!\n", argv[0]);

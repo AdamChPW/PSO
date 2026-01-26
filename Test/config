@@ -1,0 +1,8 @@
+0.6 1.5 0.8 0.3 0.6
+w   c1  c2  r1  r2
+
+w  - waga
+c1 - wspolczynnik uczenia jednostki
+c2 - wspolczynnik uczenia grupy
+r1 - liczba losowa <0:1> jednosku
+r2 - liczba losowa <0:1> grupy
