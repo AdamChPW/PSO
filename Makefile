@@ -16,6 +16,7 @@ comp: src/*.c
 start:	comp
 	bin/pso Test/mapa -c Test/config -p 5 -i 100 -n 5
 
-test:	comp
+test:	comp gen_map/*.c
+	bin/gen Test/mapa_100x100 100 100
 	bin/pso Test/mapa_100x100 -c Test/config -p 30 -i 100 -n 10
 	
