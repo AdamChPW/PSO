@@ -58,6 +58,11 @@ int main(int argc, char** argv)
         }
     }
 
+	if(p <= 0){
+		fprintf(stderr, "[%s] Error 3: Nie poprawna ilosc czasteczek.\n", argv[0]);
+		return 3;
+	}
+
     Swarm* swarm = CreateSwarm(p, map->w, map->h, map);
 
     FILE* out = n == 0 ? NULL : fopen("csv.txt", "w");
