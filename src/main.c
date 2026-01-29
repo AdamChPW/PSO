@@ -75,6 +75,9 @@ int main(int argc, char** argv)
             }
 		}
     }
+    if(out!=NULL)
+        fclose(out);
+
 
     int xBest = (int)swarm->gbest[0];
     int yBest = (int)swarm->gbest[1];
@@ -93,8 +96,8 @@ int main(int argc, char** argv)
             double dystans = sqrt( (max[1] - xBest)*(max[1] - xBest) + (max[2] - yBest)*(max[2] - yBest) );
             printf("Roznica sygnalu: %.2lf\nOdpleglosc od celu: %.2lf\n", max[0] - vBest, dystans);
         }
+        free(max);
     }
-
 
     FreeSwarm(swarm);
     FreeMap(map);

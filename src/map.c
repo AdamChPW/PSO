@@ -17,6 +17,11 @@ Map* LoadMap(char* file)
     if(in != NULL)
     {
         fscanf(in, "%d %d", &w, &h);
+        if(w == 0 || h == 0){
+            fprintf(stderr, "[src/map.c] Wymiary mapy nie moga byc mniejsze od 1x1: %dx%d\n", w, h);
+            fclose(in);
+            return NULL;
+        }
         map = CreateMap(w, h);
 
         if(map != NULL)
@@ -29,7 +34,7 @@ Map* LoadMap(char* file)
                     if(ReadRow(buf, w, map->data[i]) == w)
                         continue;
                     
-                fprintf(stderr, "[src/map.c] Wystopil blad przy implementacji danych do mapy. (rzat %d) \n", i);
+                fprintf(stderr, "[src/map.c] Wystopil blad przy implementacji danych do mapy. (rzad %d) \n", i);
                 fclose(in);
                 FreeMap(map);
                 return NULL;
@@ -44,8 +49,9 @@ Map* LoadMap(char* file)
     else{
         fprintf(stderr, "[src/map.c] Nie udalo sie otworzyc pliku %s\n", file);
     }
-
-    fclose(in);
+    
+    if(in != NULL)
+        fclose(in);
     return map;
 }
 
@@ -80,13 +86,15 @@ double GetValue(Map* map, double x, double y){
 double* GetMax(Map* map){
     int r,c;
     double* max = malloc(sizeof(double) * 3);
+    max[0] = -99999;
     for(r = 0; r < map->w; r++)
-        for(c = 0; c < map->h; c++)
+        for(c = 0; c < map->h; c++){
             if(GetValue(map, r, c) > max[0]){
                 max[0] = GetValue(map, r, c);
                 max[1] = (double)r;
                 max[2] = (double)c;
             }
+        }
     return max;
 }
 

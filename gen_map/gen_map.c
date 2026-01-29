@@ -4,19 +4,17 @@
 
 void GenerateMap(const char* f, int w, int h, double signal, double streng)
 {
-	FILE* out = fopen(f, "w");
-	if (!out) {
-		fprintf(stderr, "Blad otwarcia pliku do zapisu!\n");
-		return;
-	}
 	if (w <= 0 || h <= 0 || signal < 0) {
 		fprintf(stderr, "Tablica nie moze miec ujemnych ani zerowych wymiarowm, a sygnal nie moze byc ujemny!\n");
-		fclose(out);
 		return;
 	}
 	if(streng < 0 || streng > 100) {
 		fprintf(stderr, "Moc sygnalu powinna byc w przedziale <0, 100>!\n");
-		fclose(out);
+		return;
+	}
+	FILE* out = fopen(f, "w");
+	if (!out) {
+		fprintf(stderr, "Blad otwarcia pliku do zapisu!\n");
 		return;
 	}
 	fprintf(out, "%d %d\n", w, h);

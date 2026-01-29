@@ -19,4 +19,7 @@ start:	comp
 test:	comp gen_map/*.c
 	bin/gen Test/mapa_100x100 100 100
 	bin/pso Test/mapa_100x100 -c Test/config -p 30 -i 100 -n 10 -d
+
+valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all bin/pso Test/mapa_100x100 -c Test/config -p 30 -i 100 -n 10 -d
 	
