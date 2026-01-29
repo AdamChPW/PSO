@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[]) {
 
-	if(argc == 0){
+	if(argc == 1){
 		printf("Program przyjmuje dane w formacie:\n");
 		printf("<wymagane> [opcjonalne]\n");
 		printf("./%s <plik_do_zapisu> [szerokosc_mapy] [wysokosc_mapy] [max_sygnal] [mocnosc_sygnalu]\n", argv[0]);
