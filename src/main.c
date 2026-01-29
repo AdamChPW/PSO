@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <math.h>
 #include "pso.h"
 #include "map.h"
 #include "logger.h"
@@ -22,6 +23,7 @@ int main(int argc, char** argv)
         return 2;
     }
 
+    int debug = 0;
     double w = 0.5, c1 = 1.0, c2 = 1.0, r1 = ((double)rand()) / RAND_MAX, r2 = ((double)rand()) / RAND_MAX;
     int p = 30, n = 0, i = 100, j;
     FILE* c = NULL;
@@ -51,6 +53,9 @@ int main(int argc, char** argv)
 			    fclose(c);
             }
         }
+        if (strcmp(argv[j], "-d") == 0) {
+            debug = 1;
+        }
     }
 
     Swarm* swarm = CreateSwarm(p, map->w, map->h, map);
@@ -70,8 +75,28 @@ int main(int argc, char** argv)
             }
 		}
     }
+
+    int xBest = (int)swarm->gbest[0];
+    int yBest = (int)swarm->gbest[1];
+    double vBest = GetValue(map, xBest, yBest);
 	
-	printf("Znaleziona pozycja to [%d]	[%d] : %.2lf\n", (int)swarm->gbest[0], (int)swarm->gbest[1], GetValue(map, swarm->gbest[0], swarm->gbest[1]));
+	printf("Znaleziona pozycja to [%d]	[%d] : %.2lf\n", xBest+1, yBest+1, vBest);
 	
+    if(debug == 1){
+        double* max = GetMax(map); 
+        if(vBest == max[0]){
+            printf("Znaleziono najwyzsza wartosc sygnalu!\n");
+        }
+        else{
+            printf("Nie znaleziono najwyzszej wartosci sygnalu...\n");
+            printf("\\\\\nMax w: [%d]  [%d] : %.2lf\n", (int)max[1]+1, (int)max[2]+1, max[0]);
+            double dystans = sqrt( (max[1] - xBest)*(max[1] - xBest) + (max[2] - yBest)*(max[2] - yBest) );
+            printf("Roznica sygnalu: %.2lf\nOdpleglosc od celu: %.2lf\n", max[0] - vBest, dystans);
+        }
+    }
+
+
+    FreeSwarm(swarm);
+    FreeMap(map);
     return 0;
 }

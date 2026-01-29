@@ -71,12 +71,23 @@ double GetValue(Map* map, double x, double y){
     r = (int) x;
     c = (int) y;
 
-    if(r >= map->h || c >= map->w){
-        fprintf(stderr, "[src/map.c] GetValue: Wspolrzedne poza mapa: (%d %d)\n",r,c);
-        exit(-1);
-    }
+    if(r >= map->h || c >= map->w)
+        return -99999;
 
     return map->data[r][c];
+}
+
+double* GetMax(Map* map){
+    int r,c;
+    double* max = malloc(sizeof(double) * 3);
+    for(r = 0; r < map->w; r++)
+        for(c = 0; c < map->h; c++)
+            if(GetValue(map, r, c) > max[0]){
+                max[0] = GetValue(map, r, c);
+                max[1] = (double)r;
+                max[2] = (double)c;
+            }
+    return max;
 }
 
 void FreeMap(Map* map){

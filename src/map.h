@@ -16,6 +16,9 @@ Map* CreateMap(int w, int h);
 
 double GetValue(Map* map, double x, double y);
 
+// Zwraca wektor z [MaxValue, xMax, yMax];
+double* GetMax(Map* map);
+
 void FreeMap(Map* map);
 
 #endif
