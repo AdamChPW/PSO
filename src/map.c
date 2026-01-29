@@ -34,7 +34,7 @@ Map* LoadMap(char* file)
                     if(ReadRow(buf, w, map->data[i]) == w)
                         continue;
                     
-                fprintf(stderr, "[src/map.c] Wystopil blad przy implementacji danych do mapy. (rzad %d) \n", i);
+                fprintf(stderr, "[src/map.c] Wystopil blad przy implementacji danych do mapy. (rzad %d) \n", i+1);
                 fclose(in);
                 FreeMap(map);
                 return NULL;
